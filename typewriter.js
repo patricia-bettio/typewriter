@@ -1,4 +1,4 @@
-"use strict";
+/* "use strict";
 
 window.addEventListener("DOMContentLoaded", init);
 //define global variables/ testing
@@ -40,5 +40,49 @@ if (sentence.length> counter) {
 //show()
 //too fast, set tim
 setTimeout(show, 150)
+}
+} */
+
+"use strict";
+
+window.addEventListener("DOMContentLoaded", start);
+
+function start(){
+
+const element = document.querySelector(".typewritten");
+console.log(element)
+typewriter(element, done);
+
+}
+
+function done(){
+console.log("Done")
+}
+
+function typewriter(element, callback){ 
+let sentence = document.querySelector(".typewritten").textContent;
+console.log(sentence)
+let counter = 0;
+console.log(counter)
+let getLetter = sentence[0];
+console.log(getLetter)
+displayAll();
+
+function displayAll (){
+//show 1st letter, 2nd, 3rd....
+console.log(sentence.substring(0, counter+1))
+console.log(sentence.substring(0, counter+2))
+console.log(sentence.substring(0, counter+3))
+let oneEach = sentence.substring(0, counter+1);
+console.log(oneEach)
+//hide the text first
+element.textContent = "";
+element.textContent = oneEach;
+++counter;
+if (sentence.length> counter) {
+setTimeout(displayAll, 150)
+} else {
+callback();
+}
 }
 }
